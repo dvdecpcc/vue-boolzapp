@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <title>WhatsApp</title>
+</head>
+<body>
+  <header class="bgHeader"></header>
+  <main class="bgMain">
+    <div id="app">
+        <div class="container myContainer mt-2">
+            <div class="row">
+                <div class="col-4">
+                    <div class="chatHeader p-2 d-flex justify-content-between align-items-center">
+                        <div class="myUser">
+                            <span class="userImg">
+                                <img src="img/avatar_8.jpg" class="img-fluid userImg" alt="my avatar">
+                            </span>
+                            <span class="fw-bold">Davde</span>
+                        </div>
+                        <div class="icons">
+                            <span><i class="fa-solid fa-circle-notch m-1 myIcon"></i></span>
+                            <span><i class="fa-solid fa-message m-1 myIcon"></i></span>
+                            <span><i class="fa-solid fa-ellipsis-vertical m-1 myIcon"></i></i></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex flex-column">
+                           <div class="d-flex align-items-center notifyMe">
+                            <span class="m-1 myIcon"><i class="fa-solid fa-bell-slash p-2 m-3" id="bell"></i></span>
+                            <div>
+                                <p class="mt-2 mb-0 ms-3">Ricevi notifiche di nuovi messaggi</p>
+                                <a class="text-decoration-underline ms-3 mt-0 smallText" href="#">Attiva notifiche desktop</a>
+                            </div>
+                           </div> 
+                           <div class="input-group input-group-sm">
+                            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass myIcon"></i></span>
+                            <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                           </div>
+                           <div class="d-flex flex-column overflow-auto contactsWrapper">
+                                <div class="d-flex align-items-center mb-1 mt-1 myChats" v-for="(contact, index) in contacts">
+                                    <div class="m-2 userImg">
+                                        <img :src="'img/avatar' + contact.avatar + '.jpg'" class="img-fluid userImg" alt="avatar">
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold">{{contact.name}}</p>
+                                        <p class="smallText">Ultimo messaggio inviato</p>
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-8 p-0">
+                    <div class="chatHeader p-2 d-flex justify-content-between align-items-center">
+                        <div class="myUser">
+                            <span class="userImg"></span>
+                            <span class="fw-bold">Contact</span>
+                        </div>
+                        <div class="icons">
+                            <span><i class="fa-solid fa-magnifying-glass myIcon m-1"></i></span>
+                            <span><i class="fa-solid fa-paperclip myIcon m-1"></i></span>
+                            <span><i class="fa-solid fa-ellipsis-vertical myIcon m-1"></i></span>
+                        </div>
+                    </div>
+                    <div class="chatDisplay overflow-auto">
+                        <div class="pt-4 me-4 d-flex justify-content-end">
+                            <div class="sent p-2">blabla</div>
+                        </div>
+                        <div class="pt-4 ms-4 d-flex justify-content-start">
+                            <div class="received p-2">blablabla</div>
+                        </div>
+                    </div>
+                    <div class="bg-light d-flex justify-content-between align-items-center">
+                        <span><i class="fa-solid fa-face-smile myIcon ms-4 footerIcon"></i></span>
+                        <input type="text" class="m-2 w-50 ps-2" placeholder="Scrivi un messaggio...">
+                        <span><i class="fa-solid fa-microphone myIcon me-4 footerIcon"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
