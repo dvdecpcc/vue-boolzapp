@@ -32,6 +32,10 @@ body{position: relative;}
     font-size: 10px;
     color: rgb(142, 142, 142);
 }
+.smallerText{
+    font-size: 7px;
+    color: rgb(142, 142, 142);
+}
 
 .chatHeader{
     background-color: rgb(234, 234, 234);
@@ -48,7 +52,7 @@ body{position: relative;}
     width: 30px;
     height: 30px;
 }
-
+.cursorPointer{cursor: pointer;}
 ::placeholder{
     font-size: 10px;
     color: rgb(142, 142, 142);
@@ -72,12 +76,13 @@ body{position: relative;}
     background-image: url(img/mine.jpg);
 }
 
-.sent{
+.iSent{
     border-radius: 6px;
     min-width: 150px;
     background-color: rgb(213, 249, 185);
+    ;
 }
-.received{
+.iReceived{
     border-radius: 6px;
     min-width: 150px;
     background-color: white;

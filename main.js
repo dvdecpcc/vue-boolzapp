@@ -1,6 +1,9 @@
-var app = new Vue ({
+var DateTime = luxon.DateTime; 
+app = new Vue ({
     el: '#app',
     data: {
+        msg: '',
+        myCurrentChat: 0,
         contacts: [
             {
                 name: 'Michele',
@@ -109,7 +112,7 @@ var app = new Vue ({
                 messages: [
                     {
                     date: '10/01/2020 15:30:55',
-                    message: 'Ciao Claudia, hai novità?',
+                    message: 'Ciao Martina, hai novità?',
                     status: 'sent'
                     },
                     {
@@ -166,5 +169,30 @@ var app = new Vue ({
         ],
      },
 
+
+    methods:{
+        setMyCurrentChat(index){this.myCurrentChat = index;},
+
+        sendMyMsg(){
+            let newMsg = {
+                message: this.msg,
+                date: DateTime.now().toFormat('dd/LL/y HH:mm'),
+                status: 'sent'
+            }
+            console.log(newMsg);
+            this.contacts[this.myCurrentChat].message.push(newMsg);
+            this.msg = '';
+            setTimeout(this.msgReceived, 1000);
+        },
+
+        msgReceived(){
+            let newMsgReceived = {
+                message: 'blablabla',
+                date: DateTime.now().toFormat('dd/LL/y HH:mm'),
+                status: 'received'
+            }
+            this.contacts[this.myCurrentChat].messages.push(newMsgReceived);
+        }
+    },
      
 })

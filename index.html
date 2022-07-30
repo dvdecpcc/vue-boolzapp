@@ -24,7 +24,7 @@
                             <span class="userImg">
                                 <img src="img/avatar_8.jpg" class="img-fluid userImg" alt="my avatar">
                             </span>
-                            <span class="fw-bold">Davde</span>
+                            <span class="fw-bold">Davide</span>
                         </div>
                         <div class="icons">
                             <span><i class="fa-solid fa-circle-notch m-1 myIcon"></i></span>
@@ -46,11 +46,11 @@
                             <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                            </div>
                            <div class="d-flex flex-column overflow-auto contactsWrapper">
-                                <div class="d-flex align-items-center mb-1 mt-1 myChats" v-for="(contact, index) in contacts">
+                                <div @click="setMyCurrentChat(index)" class="d-flex align-items-center mb-1 mt-1 myChats" v-for="(contact, index) in contacts" :class="(myCurrentChat == index)? 'active':''">
                                     <div class="m-2 userImg">
                                         <img :src="'img/avatar' + contact.avatar + '.jpg'" class="img-fluid userImg" alt="avatar">
                                     </div>
-                                    <div>
+                                    <div class="cursorPointer">
                                         <p class="fw-bold">{{contact.name}}</p>
                                         <p class="smallText">Ultimo messaggio inviato</p>
                                     </div>
@@ -73,16 +73,21 @@
                         </div>
                     </div>
                     <div class="chatDisplay overflow-auto">
-                        <div class="pt-4 me-4 d-flex justify-content-end">
+                        <!-- <div class="pt-4 me-4 d-flex justify-content-end">
                             <div class="sent p-2">blabla</div>
                         </div>
                         <div class="pt-4 ms-4 d-flex justify-content-start">
                             <div class="received p-2">blablabla</div>
+                        </div> -->
+                        <div v-for="(message, index) in contacts[myCurrentChat].messages" :class="(message.status == 'sent')? 'justify-content-end':'justify-content-start'" class="d-flex p-2 mx-3">
+                            <div :class="(message.status == 'sent')? 'iSent':'iReceived'" class="p-2">{{message.message}}
+                                <p class="smallerText mt-1 mb-0 text-end">{{message.date}}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="bg-light d-flex justify-content-between align-items-center">
                         <span><i class="fa-solid fa-face-smile myIcon ms-4 footerIcon"></i></span>
-                        <input type="text" class="m-2 w-50 ps-2" placeholder="Scrivi un messaggio...">
+                        <input @keyup.enter="sendMyMsg" v-model="msg" type="text" class="m-2 w-50 ps-2" placeholder="Scrivi un messaggio...">
                         <span><i class="fa-solid fa-microphone myIcon me-4 footerIcon"></i></span>
                     </div>
                 </div>
@@ -90,7 +95,7 @@
         </div>
     </div>
   </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script type="text/javascript" src="main.js"></script>
 </body>
