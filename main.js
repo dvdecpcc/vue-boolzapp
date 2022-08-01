@@ -173,6 +173,7 @@ app = new Vue ({
     methods:{
         setMyCurrentChat(index){this.myCurrentChat = index;},
 
+        
         sendMyMsg(){
             let newMsg = {
                 message: this.msg,
@@ -180,10 +181,13 @@ app = new Vue ({
                 status: 'sent'
             }
             console.log(newMsg);
-            this.contacts[this.myCurrentChat].message.push(newMsg);
-            this.msg = '';
-            setTimeout(this.msgReceived, 1000);
+            //this.contacts[this.myCurrentChat].message.push(newMsg);
+            this.contacts.push(newMsg)
+            //this.msg = newMsg.message;
+            console.log("msg is: ",this.msg)
+            //setTimeout(this.msgReceived(), 1000);
         },
+
 
         msgReceived(){
             let newMsgReceived = {
@@ -196,3 +200,4 @@ app = new Vue ({
     },
      
 })
+
